@@ -81,11 +81,6 @@ export default function App() {
   return (
     <main className="page-shell">
       <header className="site-header">
-        <div className="brand-mark" aria-hidden="true">▧</div>
-        <div>
-          <h1>Photo Wall</h1>
-          <p>Collected moments, in one place.</p>
-        </div>
         <div className="photo-count">{photos.length}{hasMore ? "+" : ""} photos</div>
       </header>
 

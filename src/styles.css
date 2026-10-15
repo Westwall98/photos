@@ -1,0 +1,60 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #182230;
+  background: #f6f7fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 320px; }
+button { font: inherit; }
+.page-shell { width: min(1600px, 100%); margin: 0 auto; padding: 28px clamp(14px, 3vw, 42px) 44px; }
+.site-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+.brand-mark { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 14px; background: #e0edff; color: #2878e5; font-size: 28px; }
+.site-header h1 { font-size: clamp(22px, 3vw, 32px); letter-spacing: -0.04em; margin: 0; }
+.site-header p { margin: 5px 0 0; color: #6d7788; font-size: 14px; }
+.photo-count { margin-left: auto; border: 1px solid #e3e7ef; background: #fff; border-radius: 999px; padding: 8px 13px; color: #5d6878; font-size: 13px; white-space: nowrap; }
+.masonry { columns: 4 230px; column-gap: 14px; }
+.photo-card { position: relative; display: block; width: 100%; break-inside: avoid; margin: 0 0 14px; padding: 0; border: 0; border-radius: 13px; overflow: hidden; background: #e5e9f0; cursor: zoom-in; text-align: left; }
+.photo-card img { display: block; width: 100%; height: auto; min-height: 90px; transition: transform 180ms ease; }
+.photo-card:hover img { transform: scale(1.025); }
+.photo-overlay { position: absolute; inset: auto 0 0; padding: 26px 12px 10px; color: white; font-size: 12px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; opacity: 0; background: linear-gradient(transparent, rgba(0,0,0,.65)); transition: opacity 160ms ease; }
+.photo-card:hover .photo-overlay, .photo-card:focus-visible .photo-overlay { opacity: 1; }
+.photo-card:focus-visible, button:focus-visible { outline: 3px solid #4e91f7; outline-offset: 3px; }
+.empty-state { min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #6c7787; }
+.empty-state h2 { color: #253145; margin: 12px 0 0; }
+.empty-state p { max-width: 480px; padding: 0 16px; line-height: 1.6; }
+.empty-icon { font-size: 42px; color: #9db7d9; }
+.error-panel { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px 16px; border-radius: 12px; color: #8c2e2e; background: #fff0f0; margin-bottom: 18px; }
+.error-panel button, .load-more { border: 0; border-radius: 9px; padding: 9px 13px; background: #2678e8; color: #fff; cursor: pointer; }
+.load-sentinel { height: 1px; }
+.status-line { color: #7b8492; text-align: center; font-size: 13px; padding: 18px 0; }
+.load-more { display: block; margin: 0 auto 24px; }
+.lightbox { position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center; gap: 18px; padding: 54px 24px 28px; background: rgba(8, 12, 20, .94); color: #fff; }
+.viewer-figure { display: flex; flex-direction: column; align-items: center; gap: 12px; margin: 0; max-width: min(88vw, 1400px); max-height: 100%; }
+.viewer-figure img { display: block; max-width: 100%; max-height: calc(100vh - 125px); object-fit: contain; }
+.viewer-figure figcaption { max-width: 80vw; overflow-wrap: anywhere; color: #d2d8e2; font-size: 12px; text-align: center; }
+.viewer-close, .viewer-nav { position: absolute; display: grid; place-items: center; border: 0; color: #fff; background: rgba(255,255,255,.12); cursor: pointer; }
+.viewer-close { top: 16px; right: 18px; width: 42px; height: 42px; border-radius: 50%; font-size: 30px; }
+.viewer-nav { top: 50%; transform: translateY(-50%); width: 44px; height: 58px; border-radius: 14px; font-size: 38px; }
+.viewer-prev { left: 18px; }
+.viewer-next { right: 18px; }
+@media (max-width: 700px) {
+  .page-shell { padding-top: 18px; }
+  .site-header { gap: 10px; margin-bottom: 20px; }
+  .brand-mark { width: 40px; height: 40px; }
+  .site-header p { font-size: 12px; }
+  .photo-count { padding: 6px 9px; font-size: 11px; }
+  .masonry { columns: 2 140px; column-gap: 8px; }
+  .photo-card { margin-bottom: 8px; border-radius: 9px; }
+  .lightbox { padding: 54px 10px 22px; gap: 4px; }
+  .viewer-figure { max-width: 100%; }
+  .viewer-nav { width: 34px; height: 46px; font-size: 30px; background: rgba(255,255,255,.2); }
+  .viewer-prev { left: 6px; }
+  .viewer-next { right: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+}

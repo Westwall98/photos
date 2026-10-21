@@ -1,6 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { fetchPhotos, type Photo } from "./api";
 
+function getDisplayName(key: string): string {
+  const filename = key.split("/").pop() || key;
+  return filename.replace(/\.[^.]+$/, "");
+}
+
 export default function App() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
@@ -109,7 +114,7 @@ export default function App() {
             key={photo.key}
             type="button"
             onClick={() => setViewerIndex(index)}
-            aria-label={`查看图片 ${photo.key}`}
+            aria-label={`查看图片 ${getDisplayName(photo.key)}`}
           >
             <img
               src={photo.url}
@@ -117,7 +122,7 @@ export default function App() {
               loading={index < 12 ? "eager" : "lazy"}
               decoding="async"
             />
-            <span className="photo-overlay">{photo.key.split("/").pop()}</span>
+            <span className="photo-overlay">{getDisplayName(photo.key)}</span>
           </button>
         ))}
       </section>
@@ -140,8 +145,8 @@ export default function App() {
             aria-label="上一张"
           >‹</button>
           <figure className="viewer-figure" onClick={(event) => event.stopPropagation()}>
-            <img src={currentPhoto.url} alt={currentPhoto.key.split("/").pop() || "Photo"} />
-            <figcaption>{viewerIndex + 1} / {photos.length} · {currentPhoto.key}</figcaption>
+            <img src={currentPhoto.url} alt={getDisplayName(currentPhoto.key) || "Photo"} />
+            <figcaption>{viewerIndex + 1} / {photos.length} · {getDisplayName(currentPhoto.key)}</figcaption>
           </figure>
           <button
             className="viewer-nav viewer-next"
